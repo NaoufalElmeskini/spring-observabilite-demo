@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: rest-api
+server:
+  port : 8080
+  servlet:
+    context-path: /rest-api
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+
+tracing:
+  url: http://jaeger:4318/v1/traces
+
+logging:
+  pattern:
+    level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
